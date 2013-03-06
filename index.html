@@ -14,7 +14,7 @@
 		<script src="libs/modernizr.custom.min.js"></script>
 	</head>
 	<body>
-		<div data-role="page" id="index">
+		<div data-role="page" id="index" data-add-back-btn="true">
 			<header data-role="header">
 				<h1>D3 Player Saver</h1>
 			</header>
@@ -31,20 +31,23 @@
 				</div><!-- NAVBAR -->
 			</div><!-- FOOTER -->
 		</div> <!-- END INDEX PAGE -->
-		<div data-role="page" id="remoteData">
+		
+		<div data-role="page" id="remoteData" data-add-back-btn="true">
 			<header data-role="header">
 				<h1>Remote Data</h1>
+				<nav data-role="navbar">
+					<ul>
+						<li><a href="#csvData" id="csvButton">CSV Data</a></li>
+						<li><a href="#jsonData" id="jsonButton">JSON Data</a></li>
+						<li><a href="#xmlData" id="xmlButton">XML Data</a></li>
+						</ul>
+					</nav>
 			</header>
-			<div data-role="content" class="content">
-				<div data-role="controlgroup" class="required">
-					<ul data-role="listview" data-shadow="true" data-inset="true">
-						<li><div class="linkTitle">View Remote Data:</div></li>
-						<li><a href="#couchData" data-role="button">Couch Data</a></li>
-						<li><a href="#jsonData" data-role="button">JSON DATA</a></li>
-						<li><a href="#csvDATA" data-role="button">CSV DATA</a></li>
-						<li><a href="#xmlDATA" data-role="button">XML DATA</a></li>
-					</ul>
-				</div><!-- CONTROLGROUP -->
+			<div data-role="content" class="content" id="remoteContent">
+				
+				<div data-role="fieldcontain" id="viewData">
+    	
+				</div>
 			</div><!-- CONTENT -->
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">
@@ -56,6 +59,14 @@
 				</div><!-- NAVBAR -->
 			</div><!-- FOOTER -->
 		</div><!-- END REMOTEDATA PAGE -->
+		
+		<div data-role="page" id="addPlayer" data-add-back-btn="true">
+			<header data-role="header">
+				<h1>Add Player</h1>
+			</header>
+			
+		</div><!-- END ADDPLAYER PAGE -->
+		
 	</body>
 	<script src="http://code.jquery.com/jquery-1.8.0.min.js" type="text/javascript"></script>
 	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js" type="text/javascript"></script>

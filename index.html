@@ -64,7 +64,28 @@
 			<header data-role="header">
 				<h1>Add Player</h1>
 			</header>
-			
+			<div data-role="content" class="content">
+				<h3>Add a New Player</h3>
+				<form id="addNewPlayer" action="#" method="post">
+				
+					<div data-role="fieldcontain">
+						<label for="selectClass">Select Player Class:</label>
+						<select id="selectClass" name="selectClass" data-native-menu="false">
+							<option data-placeholder="true">Select a Class</option>
+							<option value="barbarian">Barbarian</option>
+							<option value="witchDoctor">Witch Doctor</option>
+							<option value="demonHunter">Demon Hunter</option>
+							<option value="wizard">Wizard</option>
+						</select>
+					</div>
+					
+					<div data-role="fieldcontain">
+						<label for="playerName">Player Name:</label>
+						<input type="text" name="playerName" id="playerName" placeholder="Please enter Player Name">
+					</div>
+					
+				</form>
+			</div><!-- CONTENT -->
 		</div><!-- END ADDPLAYER PAGE -->
 		
 	</body>

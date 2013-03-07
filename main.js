@@ -3,7 +3,6 @@ $('#home').on('pageinit', function(){
 });	
 		
 $('#addPlayer').on('pageinit', function(){
-
 		var myForm = $('#addPlayer');
 		    myForm.validate({
 			invalidHandler: function(form, validator) {
@@ -25,7 +24,7 @@ var autofillData = function (){
 };
 
 var getData = function(){
-
+	
 };
 
 var storeData = function(data){
@@ -37,18 +36,24 @@ var	deleteItem = function (){
 };
 					
 var clearLocal = function(){
-
+		if( localStorage.length === 0 ){
+			alert( "No Saved Players." );
+			}else{
+				localStorage.clear();
+				alert( "All Players were Deleted!" );
+				window.location.reload();
+				return false;
+			}
 };
 
 $( '#localStorage' ).on('pageinit', function() {
-
-	$( '#showData' ).on('click', getData());
-	$( '#clearData' ).on('click', clearLocal());
-	$( '#autoFillData' ).on('click', autofillData());
+	$( '#deletePlayer' ).on('click', deleteItem);
+	$( '#showData' ).on('click', getData);
+	$( '#clearData' ).on('click', clearLocal);
+	$( '#autoFillData' ).on('click', autofillData);
 });
 
 $( '#remoteData' ).on('pageinit', function(){
-
 	 $( '#jsonButton' ).on( 'click', function () {
 		$('#viewData').empty();
         $.ajax( {

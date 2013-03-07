@@ -19,12 +19,19 @@
 				<h1>D3 Player Saver</h1>
 			</header>
 			<div data-role="content" class="content">
+				<br>
+				<br>
 				<a href="#addPlayer" data-role="button">Add a Player</a>
+				<br>
 				<div data-role="controlgroup">
 				<ul data-role="listview" data-shadow="true" data-inset="true">
 					<li><div class="linkTitle">View current Players:</div></li>
 					<li><a href="#all" id="all" data-role="button">All Players</a></li>
 					<li><a href="#monk" id="monk" data-role="button">Monk Players</a></li>
+					<li><a href="#witchDoctor" id="witchDoctor" data-role="button">Witch Doctor Players</a></li>
+					<li><a href="#barbarian" id="barbarian" data-role="button">Barbarian Players</a></li>
+					<li><a href="#wizard" id="wizard" data-role="button">Wizard Players</a></li>
+					<li><a href="#demonHunter" id="demonHunter" data-role="button">Demon Hunter Players</a></li>
 				</ul>
 			</div>
 			</div><!-- CONTENT -->
@@ -129,11 +136,14 @@
 				<div data-role="controlgroup">
 				<ul data-role="listview" data-shadow="true" data-inset="true">
 					<li><div class="linkTitle">Local Storage Options:</div></li>
-					<li><a href="#showData" data-role="button">View Local Storage</a></li>
-					<li><a href="#clearData" data-role="button">Clear Local Storage</a></li>
-					<li><a href="#autoFillData" data-role="button">Autofill Local Storage</a></li>
+					<li><a href="#showData" id="showData" data-role="button">View Local Storage</a></li>
+					<li><a href="#clearData" id="clearData" data-role="button">Clear Local Storage</a></li>
+					<li><a href="#autoFillData" id="autoFillData" data-role="button">Autofill Local Storage</a></li>
 				</ul>
-			</div>
+				</div>
+				<div data-role="fieldcontain" id="viewLocalData">
+				
+				</div>
 			</div>
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">

@@ -44,6 +44,7 @@ $( '#localStorage' ).on('pageinit', function() {
 
 	$( '#showData' ).on('click', getData());
 	$( '#clearData' ).on('click', clearLocal());
+	$( '#autoFillData' ).on('click', autofillData());
 });
 
 $( '#remoteData' ).on('pageinit', function(){

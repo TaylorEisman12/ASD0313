@@ -2,7 +2,7 @@ $('#home').on('pageinit', function(){
 	//code needed for home page goes here
 });	
 		
-$('#addCharacter').on('pageinit', function(){
+$('#addPlayer').on('pageinit', function(){
 
 		var myForm = $('#addPlayer');
 		    myForm.validate({
@@ -15,7 +15,7 @@ $('#addCharacter').on('pageinit', function(){
 	});
 	
 	//any other code needed for addItem page goes here
-	
+	$('#submit').on('click', storeData());	
 });
 
 //The functions below can go inside or outside the pageinit function for the page in which it is needed.
@@ -39,6 +39,12 @@ var	deleteItem = function (){
 var clearLocal = function(){
 
 };
+
+$( '#localStorage' ).on('pageinit', function() {
+
+	$( '#showData' ).on('click', getData());
+	$( '#clearData' ).on('click', clearLocal());
+});
 
 $( '#remoteData' ).on('pageinit', function(){
 

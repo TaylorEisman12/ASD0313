@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <characters>
         <item>
-            <category>something</category>
+            <playerClass>Witch Doctor</playerClass>
+            <playerName>Sam</playerName>
+            <level>10</level>
+            <hardcore>Yes</hardcore>
+            <difficulty>Normal</difficulty>
         </item>
         <item>
-            <category>something</category>
+            <playerClass>Wizard</playerClass>
+            <playerName>Ash</playerName>
+            <level>40</level>
+            <hardcore>No</hardcore>
+            <difficulty>Nightmare</difficulty>
+       </item>
+       <item>
+            <playerClass>Monk</playerClass>
+            <playerName>Healer</playerName>
+            <level>58</level>
+            <hardcore>No</hardcore>
+            <difficulty>Hell</difficulty>
+       </item>
+       <item>
+            <playerClass>Barbarian</playerClass>
+            <playerName>Tank</playerName>
+            <level>60</level>
+            <hardcore>No</hardcore>
+            <difficulty>Inferno</difficulty>
+       </item>
+       <item>
+            <playerClass>Demon Hunter</playerClass>
+            <playerName>Killah</playerName>
+            <level>52</level>
+            <hardcore>Yes</hardcore>
+            <difficulty>Hell</difficulty>
        </item>
     </characters>

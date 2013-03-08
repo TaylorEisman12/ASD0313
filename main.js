@@ -33,13 +33,16 @@ var autofillData = function (){
 
 var getData = function(){
 	$("#viewLocalData").empty();
+		if( localStorage.length === 0 ){
+			alert( "No Saved Players to View." );
+			}
         for (var i= 0, j=localStorage.length; i<j ; i++){
             var key = localStorage.key(i);
             var item = JSON.parse(localStorage.getItem(key));
             console.log(item);
             var makeSubList = $("<li></li>");
             var makeSubLi = $( "<h3>"+item.playerClass[1]+"</h3>"+
-                "<p><strong>"+item.level[1]+"</strong></p>"+
+                "<p>"+item.level[1]+"</p>"+
                 "<p>"+item.playerName[1]+"</p>" +
                 "<p>"+item.hardcore[1]+"</p>"+
                 "<p>"+item.difficulty[1]);

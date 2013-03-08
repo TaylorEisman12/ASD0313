@@ -1,6 +1,10 @@
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
 });	
+
+$("#index header a").on('click', function() { 
+	alert("This app is used to save your Diablo 3 characters with basic details.");
+ });
 		
 $('#addPlayer').on('pageinit', function(){
 		var myForm = $('#addPlayer');
@@ -8,7 +12,7 @@ $('#addPlayer').on('pageinit', function(){
 			invalidHandler: function(form, validator) {
 			},
 			submitHandler: function() {
-		var data = myForm.serializeArray();
+			var data = myForm.serializeArray();
 			storeData(data);
 		}
 	});
@@ -20,19 +24,64 @@ $('#addPlayer').on('pageinit', function(){
 //The functions below can go inside or outside the pageinit function for the page in which it is needed.
 
 var autofillData = function (){
-	 
+	 	for ( var n in json )
+	 		{
+		 		var id = Math.floor( Math.random()*10001 );
+		 		localStorage.setItem( id, JSON.stringify( json[n] ) );
+		 	}
 };
 
 var getData = function(){
-	
+	$("#viewLocalData").empty();
+        for (var i= 0, j=localStorage.length; i<j ; i++){
+            var key = localStorage.key(i);
+            var item = JSON.parse(localStorage.getItem(key));
+            console.log(item);
+            var makeSubList = $("<li></li>");
+            var makeSubLi = $( "<h3>"+item.playerClass[1]+"</h3>"+
+                "<p><strong>"+item.level[1]+"</strong></p>"+
+                "<p>"+item.playerName[1]+"</p>" +
+                "<p>"+item.hardcore[1]+"</p>"+
+                "<p>"+item.difficulty[1]);
+            var makeLink = $("<a href='#' id='"+key+"'>Edit</a>");
+            makeLink.on('click', function(){
+                console.log("This is my key: "+this.id);
+            });
+            makeLink.html(makeSubLi);
+            makeSubList.append(makeLink).appendTo("#viewLocalData");
+        };
+        //$("ul").listview('refresh');
 };
 
-var storeData = function(data){
-	
+var storeData = function(key){
+		if ( !key )
+		{
+			var id = Math.floor( Math.random() * 10001 );
+		}else {
+			id = key;
+		}
+		var item = {};
+			item.playerClass = ["Player Class:" , $( '#playerClass' ).val()];
+			item.playerName = ["Player Name:" , $( '#playerName' ).val()];
+			item.level = ["Level:" , $( '#level' ).val()];
+			item.hardcore = ["Hardcore:" , $( '#hardcore' ).val()];
+			item.difficulty = ["Difficulty:" , $( '#difficulty' ).val()];
+			localStorage.setItem( id, JSON.stringify( item ) );
+			alert( "Player Added." );
 }; 
 
 var	deleteItem = function (){
-			
+		var ask = confirm( "Are you sure you want to delete Player?" );
+			if (ask)
+			{
+				localStorage.removeItem( this.key );
+				window.location.reload();
+				alert( "Player deleted!" );
+			}
+			else
+			{
+				alert( "Player was not deleted." );
+			}
 };
 					
 var clearLocal = function(){

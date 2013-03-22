@@ -1,29 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- Taylor Eisman-->
 <html>
-  <head>
-    <title>My New CouchApp</title>
-    <link rel="stylesheet" href="style/main.css" type="text/css">
-  </head>
-  <body>
-    <div id="account"></div>
-
-    <h1>Generated CouchApp</h1>
-
-    <div id="profile"></div>
-    <div id="items"></div>
-
-    <div id="sidebar">
-      <p>Edit welcome message.</p>
-      <p>Ideas: You could easily turn this into a photo sharing app, or a grocery list, or a chat room.</p>
-    </div>
-  </body>
-  <script src="vendor/couchapp/loader.js"></script>
-  <script type="text/javascript" charset="utf-8">
-    $.couch.app(function(app) {
-      $("#account").evently("account", app);
-      $("#profile").evently("profile", app);
-      $.evently.connect("#account","#profile", ["loggedIn","loggedOut"]);
-      $("#items").evently("items", app);
-    });
-  </script>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="robots" content="noindex, nofollow" />
+		<title>Diablo 3 Characters</title>
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<meta name="viewport" content="target-densitydpi=device-dpi" />
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320"/>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+		<script src="libs/modernizr.custom.min.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="index" data-add-back-btn="true">
+			<header data-role="header">
+				<h1>D3 Player Saver</h1><a href="#">App info</a>
+			</header>
+			<div data-role="content">
+				<br>
+				<br>
+				<a href="#addPlayer" data-role="button">Add a Player</a>
+				<br>
+				<div data-role="controlgroup">
+				<ul data-role="listview" data-shadow="true" data-inset="true">
+					<li><div class="linkTitle">View current Players:</div></li>
+					<li><a href="#all" id="all" data-role="button">All Players</a></li>
+					<li><a href="#monk" id="monk" data-role="button">Monk Players</a></li>
+					<li><a href="#witchDoctor" id="witchDoctor" data-role="button">Witch Doctor Players</a></li>
+					<li><a href="#barbarian" id="barbarian" data-role="button">Barbarian Players</a></li>
+					<li><a href="#wizard" id="wizard" data-role="button">Wizard Players</a></li>
+					<li><a href="#demonHunter" id="demonHunter" data-role="button">Demon Hunter Players</a></li>
+				</ul>
+			</div>
+			</div><!-- CONTENT -->
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#remoteData" data-icon="plus">Remote Data</a></li>
+						<li><a href="#index" data-icon="home" class="ui-btn-active">Home</a></li>
+						<li><a href="#localStorage" data-icon="box">Local Storage</a></li>
+					</ul>
+				</div><!-- NAVBAR -->
+			</div><!-- FOOTER -->
+		</div> <!-- END INDEX PAGE -->
+		
+		<section id="remoteData" data-role="page" data-add-back-btn="true">
+			<header data-role="header">
+				<h1>Remote Data</h1>
+				<nav data-role="navbar">
+					<ul>
+						<li><a href="#csvData" id="csvButton">CSV Data</a></li>
+						<li><a href="#jsonData" id="jsonButton">JSON Data</a></li>
+						<li><a href="#xmlData" id="xmlButton">XML Data</a></li>
+						</ul>
+					</nav>
+			</header>
+			<div data-role="content"  id="remoteContent">
+				
+				<div data-role="fieldcontain" id="viewData">
+    	
+				</div>
+			</div><!-- CONTENT -->
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#remoteData" data-icon="plus" class="ui-btn-active">Remote Data</a></li>
+						<li><a href="#index" data-icon="home">Home</a></li>
+						<li><a href="#localStorage" data-icon="box">Local Storage</a></li>
+					</ul>
+				</div><!-- NAVBAR -->
+			</div><!-- FOOTER -->
+		</div><!-- END REMOTEDATA PAGE -->
+		
+		<section id="addPlayer" data-role="page" data-add-back-btn="true">
+			<header data-role="header">
+				<h1>Add Player</h1>
+			</header>
+			<div data-role="content">
+				<h3>Add a New Player</h3>
+				<form id="addNewPlayer" action="#" method="post">
+					<div data-role="fieldcontain">
+						<label for="selectClass">Select Player Class:</label>
+						<select id="selectClass" name="selectClass" data-native-menu="false">
+							<option data-placeholder="true">Select a Class</option>
+							<option value="barbarian">Barbarian</option>
+							<option value="witchDoctor">Witch Doctor</option>
+							<option value="demonHunter">Demon Hunter</option>
+							<option value="wizard">Wizard</option>
+							<option value="monk">Monk</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="playerName">Player Name:</label>
+						<input type="text" name="playerName" id="playerName" placeholder="Please enter Player Name">
+					</div>
+					<div data-role="fieldcontain">
+						<label for="level">Level:</label>
+						<input type="range" name="level" id="level" value="30" min="0" max="60">
+					</div>
+					<div data-role="fieldcontain">
+						<label for="hardcore">Hardcore?</label><br />
+						<select data-role="slider">
+							<option value="off">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>Difficulty:</legend>
+							<input type="radio" value="normal" name="normal" id="difficulty" />
+							<label for="normal">Normal</label>
+							<input type="radio" value="nightmare" name="nightmare" id="difficulty" />
+							<label for="nightmare">Nightmare</label>
+							<input type="radio" value="hell" name="hell" id="difficulty" />
+							<label for="hell">Hell</label>
+							<input type="radio" value="inferno" name="inferno" id="difficulty" />
+							<label for="inferno">Inferno</label>
+						</fieldset>
+					</div>
+					<div class="ui-grid-b">
+						<div class="ui-block-a"><p><input type="submit" value="submit" id="submit" /></p></div>
+						<div class="ui-block-b"><p></p></div>
+						<div class="ui-block-c"><p><a href="#index" id="cancelLink">Cancel</a></p></div>
+					</div>
+				</form>
+			</div><!-- CONTENT -->
+		</div><!-- END ADDPLAYER PAGE -->
+		<section id="localStorage" data-role="page" data-add-back-btn="true">
+			<header data-role="header">
+				<h1>Local Storage</h1>
+			</header>
+			<div data-role="content">
+				<div data-role="controlgroup">
+				<ul data-role="listview" data-shadow="true" data-inset="true">
+					<li><div class="linkTitle">Local Storage Options:</div></li>
+					<li><a href="#showData" id="showData" data-role="button">View Local Storage</a></li>
+					<li><a href="#clearData" id="clearData" data-role="button">Clear Local Storage</a></li>
+					<li><a href="#autoFillData" id="autoFillData" data-role="button">Autofill Local Storage</a></li>
+				</ul>
+				</div>
+				<div data-role="fieldcontain" id="viewLocalData">
+				
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#remoteData" data-icon="plus">Remote Data</a></li>
+						<li><a href="#index" data-icon="home">Home</a></li>
+						<li><a href="#localStorage" data-icon="box" class="ui-btn-active">Local Storage</a></li>
+					</ul>
+				</div><!-- NAVBAR -->
+			</div><!-- FOOTER -->
+		</div><!-- END LOCAL STORAGE PAGE -->
+	</body>
+	<script src="http://code.jquery.com/jquery-1.8.0.min.js" type="text/javascript"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js" type="text/javascript"></script>
+	<script src="libs/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="xhr/data.json" type="text/javascript"></script>
+	<script src="main.js" type="text/javascript"></script>
+	<script src="json.js" type="text/javascript"></script>
 </html>

@@ -1,3 +1,135 @@
+$('#wizard').on('click', function () {
+	$('#playerList').empty();
+	$.ajax({
+		"url": "_view/wizardPlayers",
+		"dataType": "json",
+		"success": function (data) {
+			console.log(data);
+			$.each(data.rows, function (index, value){
+				console.log(value);
+				var playerName		= value.value.playerName;
+				var playerClass		= value.value.playerClass;
+				var level			= value.value.level;
+				var hardcore		= value.value.hardcore;
+				var difficulty		= value.value.difficulty;
+				$('playerList').append(
+					$('<li>').append(
+						$('<a>').attr("href", "#")
+							.text(playerName)
+					)
+				);
+			});
+			$('#playerList').listview('refresh');
+		}	
+	});
+});
+
+$('#demonHunter').on('click', function () {
+	$('#playerList').empty();
+	$.ajax({
+		"url": "_view/demonPlayers",
+		"dataType": "json",
+		"success": function (data) {
+			console.log(data);
+			$.each(data.rows, function (index, value){
+				console.log(value);
+				var playerName		= value.value.playerName;
+				var playerClass		= value.value.playerClass;
+				var level			= value.value.level;
+				var hardcore		= value.value.hardcore;
+				var difficulty		= value.value.difficulty;
+				$('playerList').append(
+					$('<li>').append(
+						$('<a>').attr("href", "#")
+							.text(playerName)
+					)
+				);
+			});
+			$('#playerList').listview('refresh');
+		}	
+	});
+});
+
+$('#witchDoctor').on('click', function (){
+	$('#playerList').empty();
+	$.ajax({
+		"url": "_view/witchPlayers",
+		"dataType": "json",
+		"success": function (data) {
+			console.log(data);
+			$.each(data.rows, function (index, value){
+				console.log(value);
+				var playerName		= value.value.playerName;
+				var playerClass		= value.value.playerClass;
+				var level			= value.value.level;
+				var hardcore		= value.value.hardcore;
+				var difficulty		= value.value.difficulty;
+				$('playerList').append(
+					$('<li>').append(
+						$('<a>').attr("href", "#")
+							.text(playerName)
+					)
+				);
+			});
+			$('#playerList').listview('refresh');
+		}	
+	});
+});
+
+$('#barbarian').on('click', function () {
+	$('#playerList').empty();
+	$.ajax({
+		"url": "_view/barbPlayers",
+		"dataType": "json",
+		"success": function(data) {
+			console.log(data);
+			$.each(data.rows, funtion(index, value){
+				console.log(value);
+				var playerName		= value.value.playerName;
+				var playerClass		= value.value.playerClass;
+				var level			= value.value.level;
+				var hardcore		= value.value.hardcore;
+				var difficulty		= value.value.difficulty;
+				$('playerList').append(
+					$('<li>').append(
+						$('<a>').attr("href", "#")
+							.text(playerName)
+					)
+				);
+			});
+			$('#playerList').listview('refresh');
+		}
+	});
+});
+
+$('#monk').on('click', function() {
+	$('#playerList').empty();
+	$.ajax({
+		"url": "_view/monkPlayers",
+		"dataType": "json",
+		"success": function(data) {
+			console.log(data);
+			$.each(data.rows, function(index, value){
+				console.log(value);
+				var playerName  = value.value.playerName;
+				var playerClass = value.value.playerClass;
+				var level		= value.value.level;
+				var hardcore	= value.value.hardcore;
+				var difficulty	= value.value.difficulty;
+				$('playerList').append(
+					$('<li>').append(
+						$('<a>').attr("href", "#")
+							.text(playerName)
+					)
+				);
+			});
+			$('#playerList').listview('refresh');
+		}
+	});
+});
+
+
+
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
 });	

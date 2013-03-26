@@ -2,6 +2,9 @@
   "env": {
     "local": {
       "db": "http://127.0.0.1:5984/players"
+    },
+    	"cloudant": {
+    	 "db": "https://tribearephinglaythesprop:C8CMjbDBgQxHThwKlMrQ0Y2w@tayloreisman.cloudant.com/players"
     }
   }
 }

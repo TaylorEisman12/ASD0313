@@ -1,12 +1,93 @@
+$(document).ready(function() {
+	$('#playerList').empty();
+	$.ajax({
+		"url": "_view/barbPlayers",
+		"dataType": "json",
+		"success": function(data) {
+			$.each(data.rows, function(index, player){
+				var playerName = player.value.playerName;
+				var playerClass = player.value.playerClass;
+				var level = player.value.level;
+				var hardcore = player.value.hardcore;
+				var difficulty = player.value.difficulty;
+				$('#playerList').append(
+					$('<li>').append(
+						$('<a>').attr("href", "#playerName")
+							.text(notes).append(
+								$('<ul>').append(
+								$('<li>').append(
+									.text(playerName, playerClass, level, hardcore, difficulty)
+							)
+						)
+					)
+				);
+			});
+			
+			$('#playerList').listview('refresh');
+		}
+	});
+});
 
-$('#home').on('pageinit', function(){
-	//code needed for home page goes here
-});	
+$('#index').live("pageshow", function(){
+	$.couch.db("players").view("app/players", {
+		success: function(data) {
+			// console.log(data);
+			$('#playerList').empty();
+			$.each(data.rows, function(index, value) {
+				var item = (value.value || value.doc);
+				$('#playerList').append(
+					$('<li>').append(
+						$('<a>')
+							.attr("href", "players.html?players=" + item.playerName)
+					)
+				);
+			});
+			$('#playerList').listview('refresh');
+		}
+	});
+});
+
+var urlVars = function(urlData) {
+	var urlData = $($.mobile.activePage.data("url");
+	var urlParts = urlData.split('?');
+	var urlPairs = urlParts[1].split('&');
+	var urlValues = {};
+	for (var pair in urlPairs) {
+		var keyValue = urlPairs[1].split('=');
+		var key = decodeURIComponet(keyValue[0]);
+		var value = decodeURIComponet(keyValue[1]);
+			urlValues[key] = value;
+	}
+	return urlValues ;
+	
+};
+
+ $('#all').live("pageshow", function(0{
+	var players = urlVars()["players"];
+	//console.log(players);
+	$couch.db("players").view("app/playerDetails", {
+		key: players
+		});
+	});
+	var urlData = $(this).data("url");
+		console.log(urlData);
+	var urlParts = urlData.split('?');
+		 foo?a=1&b=2&c=3
+	var urlPairs = urlParts[1].split('&');
+	var urlValues = {};
+		for (var pair in urlPairs) {
+	var keyValue = urlPairs[1].split('=');
+	var key = decodeURIComponet(keyValue[0]);
+	var value = decodeURIComponet(keyValue[1]);
+		urlValues[key] = value;
+}
+	console.log(urlValues);
+});
 
 $("#index header a").on('click', function() { 
 	alert("This app is used to save your Diablo 3 characters with basic details.");
  });
-		
+			
 $('#addPlayer').on('pageinit', function(){
 		var myForm = $('#addPlayer');
 		    myForm.validate({

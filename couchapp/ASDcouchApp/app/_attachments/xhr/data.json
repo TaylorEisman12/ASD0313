@@ -1,0 +1,39 @@
+{
+    "characters" : [
+    {
+        "playerClass":     ["Player Class:", "Witch Doctor"],
+        "playerName": ["Player Name:", "Lambo"],
+        "level":	["Level:", "22"],
+        "hardcore":		["Hardcore:", "Yes"],
+        "difficulty":	["Difficulty:", "Normal"]
+    },
+    {
+        "playerClass":     ["Player Class:", "Barbarian"],
+        "playerName": ["Player Name:", "Stella"],
+        "level":	["Level:", "45"],
+        "hardcore":		["Hardcore:", "No"],
+        "difficulty":	["Difficulty:", "Nightmare"]
+    },
+    {
+        "playerClass":     ["Player Class:", "Wizard"],
+        "playerName": ["Player Name:", "Larz"],
+        "level":	["Level:", "60"],
+        "hardcore":		["Hardcore:", "No"],
+        "difficulty":	["Difficulty:", "Hell"]
+    },
+    {
+        "playerClass":     ["Player Class:", "Monk"],
+        "playerName": ["Player Name:", "GangReal"],
+        "level":	["Level:", "60"],
+        "hardcore":		["Hardcore:", "Yes"],
+        "difficulty":	["Difficulty:", "Inferno"]
+    },
+    {
+        "playerClass":     ["Player Class:", "Demon Hunter"],
+        "playerName": ["Player Name:", "GhostKilla"],
+        "level":	["Level:", "30"],
+        "hardcore":		["Hardcore:", "Yes"],
+        "difficulty":	["Difficulty:", "Normal"]
+    }
+    ]
+    }

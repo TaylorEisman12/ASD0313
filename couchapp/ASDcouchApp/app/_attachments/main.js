@@ -8,7 +8,7 @@ $('#monk').on('click', function (){
 				$('#playerList').append(
 					$(<'li'>).append(
 						$('<a>')
-						.attr("href", "player.html")
+						.attr("href", "player.html?player=" + item.playerName)
 						.text(item.playerName).append(
 							$('<button/>')
     							.text('Delete Player')
@@ -20,6 +20,13 @@ $('#monk').on('click', function (){
 			$('#playerList').listview('refresh');
 		}
 	});
+});
+
+$('#player').live("pageshow", function() {
+	var urlData = $(this).data("url");
+	console.log(urlData);
+	var urlParts = urlData.split('?');
+	
 });
 
 $('#witchDoctor').on('click', function (){

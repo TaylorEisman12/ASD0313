@@ -38,8 +38,10 @@ var urlVars = function (urlData) {
 
 $('#player').live("pageshow", function() {
 	var player = urlVars()["player"];
-	var urlData = $(this).data("url");
 	console.log(urlData);
+	$.couch.db("players").view("plugin/monkPlayers", {
+		
+	});
 });
 
 $('#witchDoctor').on('click', function (){

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$('#index').live("pageshow", function() {
 	$('#playerList').empty();
 	$.ajax({
 		"url": "_view/barbPlayers",

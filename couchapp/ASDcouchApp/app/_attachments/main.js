@@ -9,7 +9,11 @@ $('#monk').on('click', function (){
 					$(<'li'>).append(
 						$('<a>')
 						.attr("href", "player.html")
-						.text(item.playerName)
+						.text(item.playerName).append(
+							$('<button/>')
+    							.text('Delete Player')
+    							.click(function () { deleteItem() });
+						)
 					)
 				)
 			});
@@ -29,7 +33,11 @@ $('#witchDoctor').on('click', function (){
 					$(<'li'>).append(
 						$('<a>')
 						.attr("href", "player.html")
-						.text(item.playerName)
+						.text(item.playerName).append(
+							$('<button/>')
+    							.text('Delete Player')
+    							.click(function () { deleteItem() });
+						)
 					)
 				)
 			});
@@ -49,7 +57,11 @@ $('#barbarian').on('click', function (){
 					$(<'li'>).append(
 						$('<a>')
 						.attr("href", "player.html")
-						.text(item.playerName)
+						.text(item.playerName).append(
+							$('<button/>')
+    							.text('Delete Player')
+    							.click(function () { deleteItem() });
+						)
 					)
 				)
 			});
@@ -69,7 +81,11 @@ $('#wizard').on('click', function (){
 					$(<'li'>).append(
 						$('<a>')
 						.attr("href", "player.html")
-						.text(item.playerName)
+						.text(item.playerName).append(
+							$('<button/>')
+    							.text('Delete Player')
+    							.click(function () { deleteItem() });
+						)
 					)
 				)
 			});
@@ -79,7 +95,7 @@ $('#wizard').on('click', function (){
 });
 
 $('#demonHunter').on('click', function (){
-	$.couch.db("players").view("plugin/demonPlayers", {
+	$.couch.db("players").view("plugin/Players", {
 		success: function(data) {
 			// console.log(data);
 			$('#playerList').empty();
@@ -89,7 +105,11 @@ $('#demonHunter').on('click', function (){
 					$(<'li'>).append(
 						$('<a>')
 						.attr("href", "player.html")
-						.text(item.playerName)
+						.text(item.playerName).append(
+							$('<button/>')
+    							.text('Delete Player')
+    							.click(function () { deleteItem() });
+						)
 					)
 				)
 			});

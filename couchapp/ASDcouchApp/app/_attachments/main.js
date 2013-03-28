@@ -22,11 +22,24 @@ $('#monk').on('click', function (){
 	});
 });
 
+var urlVars = function (urlData) {
+	var urlData = $($.mobile.activePage).data("url");
+	var urlParts = urlData.split('?');
+	var urlPairs = urlParts[1].split('&');
+	var urlValues = {};
+	for (var pair in urlPairs) {
+		var keyValue = urlPairs[pair].split('=');
+		var key = decodeURIComponet(keyValue[0]);
+		var value = decodeURIComponet(keyValue[1]);
+		urlValues[key] = value;	
+	}
+	return urlValues;
+};
+
 $('#player').live("pageshow", function() {
+	var player = urlVars()["player"];
 	var urlData = $(this).data("url");
 	console.log(urlData);
-	var urlParts = urlData.split('?');
-	
 });
 
 $('#witchDoctor').on('click', function (){

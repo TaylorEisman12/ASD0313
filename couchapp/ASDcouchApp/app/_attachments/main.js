@@ -39,8 +39,8 @@ var urlVars = function (urlData) {
 $('#player').live("pageshow", function() {
 	var player = urlVars()["player"];
 	console.log(urlData);
-	$.couch.db("players").view("plugin/monkPlayers", {
-		
+	$.couch.db("players").view("plugin/playerViews", {
+		key: "Player Name:" + playerName
 	});
 });
 
@@ -137,6 +137,28 @@ $('#demonHunter').on('click', function (){
 			});
 			$('#playerList').listview('refresh');
 		}
+	});
+});
+
+	$('#savePlayer').on('click', function(){
+		$.couch.db("players").saveDoc(this.get('playerName'), {
+	    	success: function(playerName) {
+    	    console.log(data);
+    		},
+    	error: function(status) {
+        console.log(status);
+   	 }
+	});
+});
+
+	$('#deletePlayer').on('click', function(playerName){
+		$.couch.db("players").removeDoc(this.get('playerName'), {
+    	 success: function(playerName) {
+        	 console.log(playerName);
+    	},
+    	error: function(status) {
+        console.log(status);
+    	}
 	});
 });
 

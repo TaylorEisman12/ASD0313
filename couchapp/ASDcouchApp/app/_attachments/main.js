@@ -38,6 +38,23 @@ var urlVars = function (urlData) {
     return urlValues;
 };
 
+var editPlayer = function() {
+	var nKey = $(this).data('key');
+	console.log("key:", nKey);
+	$.couch.db('players').openDoc(nKey, {
+		success: function(data){
+			console.log(data);
+			$('#playerName').val(data.playerName);
+			$('#playerClass').val(data.playerClass);
+			$('#level').val(data.level);
+			$('#hardcore').val(data.hardcore);
+			$('#difficulty').val(data.difficulty);
+			$('#submit').val("Save changes").attr({'key': data._id, 'rev': data._rev}); 
+			$.mobile.changePage('#addPlayer');
+		}
+	});
+};
+
 $(document).on("pageinit", '#player', function() {
     var player = urlVars()['player'];
     console.log(urlData);
@@ -191,30 +208,30 @@ var autofillData = function (){
              }
 };
 
-var getData = function(){
-    $("#viewLocalData").empty();
-        if( localStorage.length === 0 ){
-            alert( "No Saved Players to View." );
-            }
-        for (var i= 0, j=localStorage.length; i<j ; i++){
-            var key = localStorage.key(i);
-            var item = JSON.parse(localStorage.getItem(key));
-            console.log(item);
-            var makeSubList = $("<li></li>");
-            var makeSubLi = $( "<h3>"+item.playerClass[1]+"</h3>"+
-                "<p>"+item.level[1]+"</p>"+
-                "<p>"+item.playerName[1]+"</p>" +
-                "<p>"+item.hardcore[1]+"</p>"+
-                "<p>"+item.difficulty[1]);
-            var makeLink = $("<a href='#' id='"+key+"'>Edit</a>");
-            makeLink.on('click', function(){
-                console.log("This is my key: "+this.id);
-            });
-            makeLink.html(makeSubLi);
-            makeSubList.append(makeLink).appendTo("#viewLocalData");
-        };
-        //$("ul").listview('refresh');
-};
+//var getData = function(){
+//    $("#viewLocalData").empty();
+//       if( localStorage.length === 0 ){
+//            alert( "No Saved Players to View." );
+//            }
+//        for (var i= 0, j=localStorage.length; i<j ; i++){
+//            var key = localStorage.key(i);
+//            var item = JSON.parse(localStorage.getItem(key));
+//            console.log(item);
+//            var makeSubList = $("<li></li>");
+//            var makeSubLi = $( "<h3>"+item.playerClass[1]+"</h3>"+
+//                "<p>"+item.level[1]+"</p>"+
+//                "<p>"+item.playerName[1]+"</p>" +
+//                "<p>"+item.hardcore[1]+"</p>"+
+//                "<p>"+item.difficulty[1]);
+//            var makeLink = $("<a href='#' id='"+key+"'>Edit</a>");
+//            makeLink.on('click', function(){
+//                console.log("This is my key: "+this.id);
+//            });
+//            makeLink.html(makeSubLi);
+//            makeSubList.append(makeLink).appendTo("#viewLocalData");
+//        };
+//        //$("ul").listview('refresh');
+//};
 
 var storeData = function(key){
         if ( !key )
@@ -229,41 +246,51 @@ var storeData = function(key){
             item.level = ["Level:" , $( '#level' ).val()];
             item.hardcore = ["Hardcore:" , $( '#hardcore' ).val()];
             item.difficulty = ["Difficulty:" , $( '#difficulty' ).val()];
-            localStorage.setItem( id, JSON.stringify( item ) );
-            alert( "Player Added." );
-}; 
+			  $.couch.db('players').saveDoc(item, {
+	       			success: function(data){
+		      		alert("Player saved.");
+};
 
-var    deleteItem = function (){
-        var ask = confirm( "Are you sure you want to delete Player?" );
-            if (ask)
-            {
-                localStorage.removeItem( this.key );
-                window.location.reload();
-                alert( "Player deleted!" );
-            }
-            else
-            {
-                alert( "Player was not deleted." );
-            }
+var deleteItem = function(){
+	var itemKey = $(this).data('key');
+	console.log("Key:", itemKey);
+	var ask = confirm("Are you sure you want to delete this player?");
+		if(ask === true){	
+			$.couch.db('players').openDoc(myKey, {		
+				success: function(data){
+					var item = {};
+					item._id = data._id;
+					item._rev = data._rev;
+					$.couch.db('players').removeDoc(item, {
+						success: function(data){
+							alert('The player was deleted.');
+						},
+						error: function() {
+		            	alert('The player was not deteled');	
+		            	}
+					});
+		};
+		$.mobile.changePage('#index');
+
 };
                     
-var clearLocal = function(){
-        if( localStorage.length === 0 ){
-            alert( "No Saved Players." );
-            }else{
-                localStorage.clear();
-                alert( "All Players were Deleted!" );
-                window.location.reload();
-                return false;
-            }
-};
+//var clearLocal = function(){
+  //      if( localStorage.length === 0 ){
+    //        alert( "No Saved Players." );
+      //      }else{
+        //        localStorage.clear();
+          //      alert( "All Players were Deleted!" );
+            //    window.location.reload();
+              //  return false;
+           // }
+//};
 
-$( '#localStorage' ).on('pageinit', function() {
-    $( '#deletePlayer' ).on('click', deleteItem);
-    $( '#showData' ).on('click', getData);
-    $( '#clearData' ).on('click', clearLocal);
-    $( '#autoFillData' ).on('click', autofillData);
-});
+// $( '#localStorage' ).on('pageinit', function() {
+ //   $( '#deletePlayer' ).on('click', deleteItem);
+ //   $( '#showData' ).on('click', getData);
+ //   $( '#clearData' ).on('click', clearLocal);
+ //   $( '#autoFillData' ).on('click', autofillData);
+//});
 
 $( '#remoteData' ).on('pageinit', function(){
      $( '#jsonButton' ).on( 'click', function () {

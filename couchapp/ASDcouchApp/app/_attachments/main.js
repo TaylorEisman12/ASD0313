@@ -78,6 +78,7 @@ $('#witchDoctor').on('click', function (){
                             //$('<button/>')
                               //  .text('Delete Player')
                                // .click(function () { deleteItem(); });
+                               
                         )
                     );
             });
@@ -168,16 +169,39 @@ $('#demonHunter').on('click', function (){
         }
     });
 });
-    $('#deletePlayer').on('click', function(playerName){
-        $.couch.db("players").removeDoc(this.get('playerName'), {
-         success: function(playerName) {
-             console.log(playerName);
-        },
-        error: function(status) {
-        console.log(status);
-        }
-    });
-});
+	var deleteItem = function(){
+	var itemKey = $(this).data('key');
+	console.log("Key:", itemKey);
+	var ask = confirm("Are you sure you want to delete this player?");
+		if(ask === true){	
+			$.couch.db('players').openDoc(myKey, {		
+				success: function(data){
+					var item = {};
+					item._id = data._id;
+					item._rev = data._rev;
+					$.couch.db('players').removeDoc(item, {
+						success: function(data){
+							alert('The player was deleted.');
+						},
+						error: function() {
+		            	alert('The player was not deteled');	
+		            	}
+					});
+		};
+		$.mobile.changePage('#index');
+
+};
+
+    //$('#deletePlayer').on('click', function(playerName){
+     //   $.couch.db("players").removeDoc(this.get('playerName'), {
+      //   success: function(playerName) {
+     //        console.log(playerName);
+     //   },
+     //   error: function(status) {
+     //   console.log(status);
+     //   }
+  //  });
+//});
 
 $("#index header a").on('click', function() { 
     alert("This app is used to save your Diablo 3 characters with basic details.");
@@ -249,29 +273,6 @@ var storeData = function(key){
 			  $.couch.db('players').saveDoc(item, {
 	       			success: function(data){
 		      		alert("Player saved.");
-};
-
-var deleteItem = function(){
-	var itemKey = $(this).data('key');
-	console.log("Key:", itemKey);
-	var ask = confirm("Are you sure you want to delete this player?");
-		if(ask === true){	
-			$.couch.db('players').openDoc(myKey, {		
-				success: function(data){
-					var item = {};
-					item._id = data._id;
-					item._rev = data._rev;
-					$.couch.db('players').removeDoc(item, {
-						success: function(data){
-							alert('The player was deleted.');
-						},
-						error: function() {
-		            	alert('The player was not deteled');	
-		            	}
-					});
-		};
-		$.mobile.changePage('#index');
-
 };
                     
 //var clearLocal = function(){

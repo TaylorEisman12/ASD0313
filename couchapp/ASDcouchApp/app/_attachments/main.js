@@ -1,3 +1,11 @@
+$(document).on("pageinit", '#player', function() {
+    var player = urlVars()['player'];
+    console.log(urlData);
+    $.couch.db("players").view("plugin/playerViews", {
+        key: "Player Name:" + playerName
+    });
+});
+
 $('#monk').on('click', function (){
     $.couch.db("players").view("plugin/monkPlayers", {
         success: function(data) {
@@ -55,13 +63,7 @@ var editPlayer = function() {
 	});
 };
 
-$(document).on("pageinit", '#player', function() {
-    var player = urlVars()['player'];
-    console.log(urlData);
-    $.couch.db("players").view("plugin/playerViews", {
-        key: "Player Name:" + playerName
-    });
-});
+
 
 $('#witchDoctor').on('click', function (){
     $.couch.db("players").view("plugin/witchPlayers", {
@@ -159,16 +161,16 @@ $('#demonHunter').on('click', function (){
     });
 });
 
-    $('#savePlayer').on('click', function(){
-        $.couch.db("players").saveDoc(this.get('playerName'), {
-            success: function(playerName) {
-            console.log(data);
-            },
-        error: function(status) {
-        console.log(status);
-        }
-    });
-});
+//    $('#savePlayer').on('click', function(){
+ //       $.couch.db("players").saveDoc(this.get('playerName'), {
+ //           success: function(playerName) {
+ //           console.log(data);
+ //           },
+  //      error: function(status) {
+  //      console.log(status);
+  //      }
+ //   });
+//});
 	var deleteItem = function(){
 	var itemKey = $(this).data('key');
 	console.log("Key:", itemKey);

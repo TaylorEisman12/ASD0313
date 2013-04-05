@@ -1,4 +1,3 @@
-
 $("#index header a").on('click', function() { 
     alert("Save a list of your Armors.");
  });
@@ -62,7 +61,7 @@ var deleteArmor = function(){
 //                $('#armorList').append(
 //                    $('<li>').append(
 //                        $('<a>')
-//                        .attr("href", "#")
+//                        .attr("href", "armor.html?armor=" + armorName)
 //                        .text(item.armorName)
 //                    );
 //                
@@ -80,7 +79,7 @@ var deleteArmor = function(){
 //                $('#armorList').append(
 //                    $('<li>').append(
 //                        $('<a>')
-//                        .attr("href", "#")
+//                        .attr("href", "armor.html?armor=" + armorName)
 //                        .text(item.armorName)
 //                    );
 //                
@@ -98,7 +97,7 @@ var deleteArmor = function(){
 //                $('#armorList').append(
 //                    $('<li>').append(
 //                        $('<a>')
-//                        .attr("href", "#")
+//                        .attr("href", "armor.html?armor=" + armorName)
 //                        .text(item.armorName)
 //                    );
 //                
@@ -116,7 +115,7 @@ var deleteArmor = function(){
 //                $('#armorList').append(
 //                    $('<li>').append(
 //                        $('<a>')
-//                        .attr("href", "#")
+//                        .attr("href", "armor.html?armor=" + armorName)
 //                        .text(item.armorName)
 //                    );
 //                
